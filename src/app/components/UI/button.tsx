@@ -1,20 +1,32 @@
-import Link from "next/link"
+import Link from "next/link";
 
 type ButtonProps = {
     title: string;
     href: string;
-    primary: boolean; // Adicionado o atributo primary como opcional
+    color?: "blue" | "gray"; // Adicionado o atributo color com opções de valores
     className?: string;
 }
 
-export const Button = ({ title, href, primary, className }: ButtonProps) => {
-    const buttonClass = primary
-        ? "bg-soft-blue border-2 border-soft-blue py-3 px-10 rounded-md text-white transition-all hover:bg-white hover:text-soft-blue"
-        : "bg-soft-red border-2 border-soft-red py-3 px-10 rounded-md text-white transition-all hover:bg-white hover:text-soft-red";
+export const Button = ({ title, href, color, className }: ButtonProps) => {
+    let buttonClass = "";
+
+    switch (color) {
+        case "blue":
+            buttonClass = "bg-soft-blue border-soft-blue hover:text-soft-blue hover:bg-transparent";
+            break;
+        case "gray":
+            buttonClass = "bg-grayish-blue border-grayish-blue hover:text-grayish-blue hover:bg-transparent";
+            break;
+        default:
+            buttonClass = "bg-soft-red border-soft-red hover:text-soft-red hover:bg-transparent"; // Valor padrão
+            break;
+    }
+
+    buttonClass += " border-2 py-3 px-6 rounded-md transition-all duration-300 text-white";
 
     return (
-        <button className={`${buttonClass} transition-all duration-300 ${className}`}>
-            <Link className="font-bold text-sm tracking-widest uppercase" href={href}>
+        <button className={`${buttonClass} ${className}`}>
+            <Link className="font-bold" href={href}>
                 {title}
             </Link>
         </button>

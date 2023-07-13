@@ -37,7 +37,6 @@ export const Menu = ({ onClose }: MenuProps) => {
                 ))}
                 <Button
                     className="border-white bg-transparent hover:text-very-dark-blue w-full"
-                    primary={false}
                     title="Login"
                     href="/login"
                 />
@@ -60,7 +59,7 @@ export const Menu = ({ onClose }: MenuProps) => {
                     <AiFillTwitterCircle size={30} />
                 </a>
             </div>
-            <button className="absolute top-8 right-3 text-white" onClick={onClose}>
+            <button className="absolute top-8 right-8 text-white" onClick={onClose}>
                 <IoClose size={30} />
             </button>
         </div>
